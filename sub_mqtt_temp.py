@@ -22,7 +22,7 @@ oled.show()
 
 wlan = nๆๆetwork.WLAN(network.STA_IF)
 wlan.active(True)
-wlan.connect('see_dum', '0863219053')
+wlan.connect('xxxx', 'xxxxx')
 
 def on_message(topic, msg):
   obj = json.loads(msg)
@@ -38,7 +38,7 @@ while not wlan.isconnected():
 oled.text('{0}'.format(wlan.ifconfig()[0]), 3, 50)
 oled.show()
 time.sleep(3)
-client = MQTTClient(CLIENT_ID, '27.254.63.34', port=1883, user='5857725C', password='8DB24662')
+client = MQTTClient(CLIENT_ID, 'xxxx', port=1883, user='xxxxx', password='xxxxxx')
 client.set_callback(on_message)
 client.connect()
 client.subscribe('15955051/5857725C/temperature')
