@@ -1,2 +1,0 @@
-import network
-def connect():  wlan=network.WLAN(network.STA_IF)   wlan.active(True)  wlan.connect('see_dum', '0863219053')  while not wlan.isconnected():    pass  print('IPAddress: {}'.format(wlan.ifconfig()[0]))
