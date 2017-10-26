@@ -1,0 +1,4 @@
+import timefrom umqtt import MQTTClientimport machine, ubinascii, gc, json from machine import I2Cfrom machine import Pinfrom machine import DHTCLIENT_ID = ubinascii.hexlify(machine.unique_id())gc.collect()d = DHT(Pin(17), DHT.DHT2X)client = MQTTClient(CLIENT_ID, 'q.emqtt.com')client.connect() time.sleep(2)while True:
+  try:    result , t, h = d.read()    if result:      msg =  json.dumps({ 'heap': gc.mem_free(),  'Type':7, 'Id': CLIENT_ID, 'temperature': '{0:.2f}'.format(t), 'humidity': '{0:.2f}'.format(h)})      print(msg)       client.publish('micro/python/temperature', msg)    time.sleep(5)
+  except OSError as e:
+    print (e)

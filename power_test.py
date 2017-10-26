@@ -1,0 +1,1 @@
+from upower import BtPowerimport timefrom machine import I2C, Pin        sensor = BtPower(com=1, timeout=1)while True:  try:    value = sensor.readAll()    print ('{0:.0f}V, {1:.2f}A, {2:.0f}W, {3:.0f}Wh'.format(value[0], value[1], value[2], value[3]))    time.sleep(2)  except Exception as e:    print(e)
